@@ -1,36 +1,35 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Home</title>
-</head>
-<body>
-<form action= "/new" method= "POST">
+{% extends 'layout.html' %}
 
-    <input type="text" name="fullname" placeholder="Write your full name">
-    <input type="text" name="email" placeholder="Write your email">
-    <input type="text" name="phone" placeholder="Write your phone">
+{% block body %}
 
-    <button>
-        Save
-    </button>
+<div class="row">
 
-</form>
+    <div class="col-md-5">
+        {% include ('partials/_contactForm.html') %}
+        {% include ('partials/_flashMessages.html') %}
+    </div>
 
-<div>
-    {% for contact in contacts %}
-        <h5>{{ contact.fullname }}</h5>
-            <a href="{{ url_for('contacts.update', id=contact.id) }}"> Update</a>
-            <a href="{{ url_for('contacts.delete', id=contact.id) }}"> Delete</a>
-
-        <p>{{contact.email}}</p>
-        <p>{{contact.phone}}</p>
-    {% endfor %}
+    <div class="col-md-7">
+        {% for contact in contacts %}
+        <div class="card mb-1 text-white bg-dark">
+            <div class="card-body">
+                <div class="d-flex justify-content-between">
+                    <h5>{{ contact.fullname }}</h5>
+                        <div>
+                            <a href="{{ url_for('contacts.update', id=contact.id) }}" class="btn bg-black
+                            text-white btn-sm rounded-0"> Update</a>
+                            <a href="{{ url_for('contacts.delete', id=contact.id) }}" class="btn btn-danger
+                            btn-sm rounden-0"> Delete</a>
+                        </div>
+                </div>
+            <p>{{contact.email}}</p>
+            <p>{{contact.phone}}</p>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
 
 </div>
 
-</body>
-</html>
+{% endblock %}
+
