@@ -15,15 +15,15 @@
             <div class="card-body">
                 <div class="d-flex justify-content-between">
                     <h5>{{ contact.fullname }}</h5>
-                        <div>
-                            <a href="{{ url_for('contacts.update', id=contact.id) }}" class="btn bg-black
+                    <div>
+                        <a href="{{ url_for('contacts.update', id=contact.id) }}" class="btn bg-black
                             text-white btn-sm rounded-0"> Update</a>
-                            <a href="{{ url_for('contacts.delete', id=contact.id) }}" class="btn btn-danger
+                        <a href="{{ url_for('contacts.delete', id=contact.id) }}" class="btn btn-danger
                             btn-sm rounden-0"> Delete</a>
-                        </div>
+                    </div>
                 </div>
-            <p>{{contact.email}}</p>
-            <p>{{contact.phone}}</p>
+                <p>{{contact.email}}</p>
+                <p>{{contact.phone}}</p>
             </div>
         </div>
         {% endfor %}
